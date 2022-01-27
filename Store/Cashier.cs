@@ -12,19 +12,18 @@ namespace Store
             Console.WriteLine($"Date: {dateOfPurchase.ToString("yyyy-MM-dd HH:mm:ss")}\n");
             Console.WriteLine("---Products---");
 
-            foreach (var product in cart.Products)
-            {
-                var quantity = product.quantity;
-                var totalCostItem = Math.Round(quantity * product.product.Price, 2);
+            foreach (var item in cart.Products)
+            { 
+                var totalCostItem = Math.Round(item.quantity * item.product.Price, 2);
 
-                var discountedPercent = 0;
+                var discountedPercent = item.product.CalculateDiscountPercent(dateOfPurchase);
                 var discountedPrice = 0m;
 
-                product.product.PrintInformations(quantity);
+                item.product.PrintInformations(item.quantity);
 
-                if ((discountedPercent = product.product.CalculateDiscountPercent(dateOfPurchase)) != 0)
+                if (discountedPercent != 0)
                 {
-                    discountedPrice = product.product.CalculateDiscount(totalCostItem, discountedPercent);
+                    discountedPrice = item.product.CalculateDiscount(totalCostItem, discountedPercent);
                     Console.WriteLine($"#discount {discountedPercent}% -${discountedPrice}");
                 }
 

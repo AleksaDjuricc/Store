@@ -15,7 +15,7 @@ namespace Store
 
         public Clothes() : base()
         {
-        
+            
         }
 
         public Size Size
