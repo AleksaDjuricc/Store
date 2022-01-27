@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store
 {
@@ -11,6 +7,18 @@ namespace Store
         private string model;
         private DateTime productionDate;
         private int weight;
+
+        public Appliance(string name, string brand, decimal price, string model, DateTime productionDate, int weight) : base(name, brand, price)
+        {
+            Model = model;
+            ProductionDate = productionDate;
+            Weight = weight;
+        }
+
+        public Appliance() : base()
+        {
+
+        }
 
         public string Model
         {
@@ -51,10 +59,7 @@ namespace Store
         {
             var dayOfPurchase = dateOfPurchase.DayOfWeek;
 
-            if (dayOfPurchase != DayOfWeek.Saturday && dayOfPurchase != DayOfWeek.Sunday && this.Price > 999)
-                return 5;
-
-            return 0;
+            return (dayOfPurchase != DayOfWeek.Saturday && dayOfPurchase != DayOfWeek.Sunday && this.Price > 999) ? 5 : 0;
         }
 
         public override void PrintInformations(decimal quantity)

@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Store
 {
     public class Cart
     {
-        private List<(Product,decimal)> products;
+        private List<(Product, decimal)> products;
+
+        public Cart(List<(Product, decimal)> products)
+        {
+            Products = products;
+        }
+
+        public Cart() : base()
+        {
+
+        }
 
         public List<(Product product, decimal quantity)> Products
         {

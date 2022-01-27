@@ -1,14 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store
 {
     public abstract class PerishableProduct : Product
     {
-       private DateTime expirationDate;
+        private DateTime expirationDate;
+
+        protected PerishableProduct(string name, string brand, decimal price, DateTime expirationDate) : base(name, brand, price)
+        {
+            ExpirationDate = expirationDate;
+        }
+
+        public PerishableProduct() : base()
+        {
+
+        }
 
         public DateTime ExpirationDate
         {
@@ -39,7 +45,7 @@ namespace Store
         public override void PrintInformations(decimal quantity)
         {
             Console.WriteLine($"\n\n{Name} {Brand}");
-            Console.WriteLine($"{quantity} x ${Price} = ${quantity*Price}");
+            Console.WriteLine($"{quantity} x ${Price} = ${quantity * Price}");
         }
     }
 }

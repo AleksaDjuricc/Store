@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store
 {
@@ -16,19 +12,19 @@ namespace Store
             Console.WriteLine($"Date: {dateOfPurchase.ToString("yyyy-MM-dd HH:mm:ss")}\n");
             Console.WriteLine("---Products---");
 
-            foreach(var item in cart.Products)
+            foreach (var product in cart.Products)
             {
-                var quantity = item.quantity;
-                var totalCostItem = Math.Round(quantity * item.product.Price,2);
+                var quantity = product.quantity;
+                var totalCostItem = Math.Round(quantity * product.product.Price, 2);
 
                 var discountedPercent = 0;
                 var discountedPrice = 0m;
 
-                item.product.PrintInformations(quantity);
+                product.product.PrintInformations(quantity);
 
-                if ((discountedPercent = item.product.CalculateDiscountPercent(dateOfPurchase)) != 0)
+                if ((discountedPercent = product.product.CalculateDiscountPercent(dateOfPurchase)) != 0)
                 {
-                    discountedPrice = item.product.CalculateDiscount(totalCostItem, discountedPercent);
+                    discountedPrice = product.product.CalculateDiscount(totalCostItem, discountedPercent);
                     Console.WriteLine($"#discount {discountedPercent}% -${discountedPrice}");
                 }
 

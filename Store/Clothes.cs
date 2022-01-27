@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store
 {
@@ -11,9 +7,20 @@ namespace Store
         private Size size;
         private string color;
 
+        public Clothes(string name, string brand, decimal price, Size size, string color) : base(name, brand, price)
+        {
+            Size = size;
+            Color = color;
+        }
+
+        public Clothes() : base()
+        {
+        
+        }
+
         public Size Size
         {
-            get 
+            get
             {
                 return size;
             }
@@ -38,10 +45,7 @@ namespace Store
         {
             var dayOfPurchase = dateOfPurchase.DayOfWeek;
 
-            if (dayOfPurchase == DayOfWeek.Saturday || dayOfPurchase == DayOfWeek.Sunday)
-                return 10;
-
-            return 0;
+            return (dayOfPurchase == DayOfWeek.Saturday || dayOfPurchase == DayOfWeek.Sunday) ? 10 : 0;
         }
 
         public override void PrintInformations(decimal quantity)

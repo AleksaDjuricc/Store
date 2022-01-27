@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store
 {
@@ -11,6 +7,18 @@ namespace Store
         private string name;
         private string brand;
         private decimal price;
+
+        public Product(string name, string brand, decimal price)
+        {
+            Name = name;
+            Brand = brand;
+            Price = price;
+        }
+
+        public Product()
+        {
+
+        }
 
         public string Name
         {
@@ -48,9 +56,9 @@ namespace Store
             }
         }
 
-        public  decimal CalculateDiscount(decimal price, int discountPercent)
+        public decimal CalculateDiscount(decimal price, int discountPercent)
         {
-            return Math.Round(price*discountPercent/100,2);
+            return Math.Round(price * discountPercent / 100, 2);
         }
 
         public abstract int CalculateDiscountPercent(DateTime dateOfPurchase);
